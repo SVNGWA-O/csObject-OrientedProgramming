@@ -29,7 +29,7 @@ public class Main {
         System.out.println(q.dequeue());
         System.out.println(q.dequeue());
 
-        ReversibleQueue<Integer> rq = new LLReversibleQueue<>();
+        ReversibleQueue<Integer> rq = new LLReversibleQueue2<>();
         rq.enqueue(1);
         rq.enqueue(2);
         rq.enqueue(3);

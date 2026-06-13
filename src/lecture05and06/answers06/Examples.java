@@ -1,30 +1,1 @@
-package lecture05and06.answers06;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
-public class Examples {
-    @Test
-    public void testSecondsUntil60DegreesC(){
-        // propane: 11900 C L / kg
-        // Pick nice numbers to make the math easy for a simple test
-        Furnace furnace = new Furnace(10.0);
-        WaterTank waterTank = new WaterTank(119000,50,50.0);
-        FuelTank fuelTank = new FuelTank(10000,11900);
-        HeatingSystem heatingSystem = new HeatingSystem(furnace,waterTank,fuelTank);
-        assertEquals(5.0, heatingSystem.secondsUntil60Degrees(),0.01);
-    }
-
-    @Test
-    public void testRunFor5Seconds(){
-        // propane: 11900 C L / kg
-        // Pick nice numbers to make the math easy for a simple test
-        Furnace furnace = new Furnace(10.0);
-        WaterTank waterTank = new WaterTank(119000,50,50.0);
-        FuelTank fuelTank = new FuelTank(10000,11900);
-        HeatingSystem heatingSystem = new HeatingSystem(furnace,waterTank,fuelTank);
-        heatingSystem.runFor(5);
-        assertEquals(60.0, waterTank.temperature,0.01);
-        assertEquals(9950.0,fuelTank.amount,0.01);
-    }
-}
+package lecture05and06.answers06;import org.junit.Test;import static org.junit.Assert.assertEquals;public class Examples {    @Test    public void testSecondsUntil60DegreesC(){        // propane: 11900 C L / kg        // Pick nice numbers to make the math easy for a simple test        Furnace furnace = new Furnace(10.0);        WaterTank waterTank = new WaterTank(119000,50,50.0);        FuelTank fuelTank = new FuelTank(10000,11900);        HeatingSystem heatingSystem = new HeatingSystem(furnace,waterTank,fuelTank);        assertEquals(5.0, heatingSystem.secondsUntil60Degrees(),0.01);    }    @Test    public void testRunFor5Seconds(){        // propane: 11900 C L / kg        // Pick nice numbers to make the math easy for a simple test        Furnace furnace = new Furnace(10.0);        WaterTank waterTank = new WaterTank(119000,50,50.0);        FuelTank fuelTank = new FuelTank(10000,11900);        HeatingSystem heatingSystem = new HeatingSystem(furnace,waterTank,fuelTank);        Furnace furnace2 = new Furnace(10.0);        WaterTank waterTank2 = new WaterTank(119000,50,50.0);        FuelTank fuelTank2 = new FuelTank(10000,11900);        HeatingSystem heatingSystem2 = new HeatingSystem(furnace2,waterTank2,fuelTank2);        heatingSystem.runFor(5);        assertEquals(heatingSystem2, heatingSystem);        // The problem is it doesnt check all the fields that would work rather it uses to do that we would alternatively cerate a copy and compare    }}

@@ -17,7 +17,14 @@ public class HeatingSystem {
      * @return the time to get to 60 degrees Celsius in seconds
      */
     public double secondsUntil60Degrees(){
-        return 0.0; //stub
+
+        double littersOfWater= this.waterTank.litersOfWater();
+        double degreesCelcius =  this.waterTank.deltaTo(60.0);
+        double kgOFFuel = this.fuelTank.fuelToBurn(littersOfWater, degreesCelcius);
+        double seconds = this.furnace.howLong(kgOFFuel);
+
+        return
+                seconds;
     }
 
     /**
@@ -28,6 +35,7 @@ public class HeatingSystem {
      * - consumes fuel
      */
     public void runFor(double seconds){
-        //stub
+        double KgofFuelToBurn = this.furnace.burnFuel(seconds);
+
     }
 }

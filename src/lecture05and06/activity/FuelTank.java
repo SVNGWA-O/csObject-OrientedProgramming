@@ -15,4 +15,11 @@ public class FuelTank {
         this.amount = amount;
         this.kcalPotential = kcalPotential;
     }
+
+    public double fuelToBurn(double littersOfWater, double degreesCelcius) {
+        return (littersOfWater * degreesCelcius)/ this.kcalPotential;
+    }
+
+
+    //
 }

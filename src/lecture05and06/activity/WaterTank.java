@@ -21,4 +21,18 @@ public class WaterTank {
         this.temperature = temperature;
         this.percentFull = percentFull;
     }
+    public double litersOfWater(){
+        return this.capacity * (this.percentFull/100);
+    }
+    public double deltaTo(double target){
+        double diff = target - this.temperature;
+        if(diff>0.0){
+            this.temperature += diff;
+            return diff;
+        }
+        else {
+            return 0.0;
+        }
+
+    }
 }

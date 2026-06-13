@@ -43,4 +43,19 @@ public class HeatingSystem {
         double deltaTemperature = celsiusLiters / this.waterTank.currentKg();
         this.waterTank.raiseBy(deltaTemperature);
     }
+
+    public String toString(){
+        return String.format("HS {%s | %s | %s}", this.furnace.toString(),
+                this.fuelTank.toString(),
+                this.waterTank.toString());
+    }
+
+    public boolean equals(Object o){
+     if (o instanceof HeatingSystem hs){
+         return this.furnace.equals(hs.furnace)&& this.fuelTank.equals(hs.fuelTank) && this.waterTank.equals(hs.waterTank);
+     }
+     else {
+         return false;
+
+     }  }
 }

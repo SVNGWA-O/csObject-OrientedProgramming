@@ -8,23 +8,25 @@ public class Main {
        - Become familiar with the starter code for the Heap HW
      */
     public static void main(String[] args){
+        BTEmpty<Integer> imt = new BTEmpty<>();
           IBinTree<Integer> immutBT =
                   new BTNode<>(1,
-                          new BTNode<>(2,new BTEmpty<>(), new BTEmpty<>()),
-                          new BTNode<>(3,new BTEmpty<>(), new BTEmpty<>()));
-        //System.out.println(immutBT);
+                          new BTNode<>(2,imt, imt),
+                          new BTNode<>(3,imt, imt));
+        System.out.println(immutBT);
+
         BinaryTree<Integer> oneToSevBT= new BinaryTree<>(List.of(1,2,3,4,5,6,7));
- //       System.out.println(oneToSevBT);
+        System.out.println(oneToSevBT);
 //
         BinaryTree<String> abcBT = new BinaryTree<>(List.of("a","b","c","d","e"));
- //       System.out.println(abcBT);
+     System.out.println(abcBT);
 //
         BinaryTree<Double> someBST =
                 new BinaryTree<>(List.of(5.0,3.0,7.0,1.0,4.0,6.0,8.0));
-//        System.out.println(someBST);
+        System.out.println(someBST);
         someBST.setStrategy(new StrategyBST<Double>());
         someBST.addElt(2.0);
-//        System.out.println(someBST);
+  System.out.println(someBST);
 //
         someBST.removeElt(5.0);
         System.out.println(someBST);

@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Examples {
 
@@ -62,66 +63,75 @@ public class Examples {
 
     @Test
     public void testClub(){
-        ClubManagable clubRoster = new ClubRosters(rawData);
+        ClubManagable clubRoster = new ClubRostersBP(rawData);
         assertEquals("ACM",clubRoster.mostPopular());
         assertEquals(5, clubRoster.uniqueClubs());
         assertEquals(List.of("b@wpi.edu", "d@wpi.edu", "j@wpi.edu"),
                 clubRoster.sortedEmails("ACM"));
     }
 
-//    @Test
-//    public void testClubBP(){
-//        ClubManagable clubRoster = new ClubRosters(rawData);
-//        clubRoster.intake(rawData);
-//        assertEquals("ACM",clubRoster.mostPopular());
-//        assertEquals(5, clubRoster.uniqueClubs());
-//        assertEquals(List.of("b@wpi.edu", "d@wpi.edu", "j@wpi.edu"),
-//                     clubRoster.sortedEmails("ACM"));
-//    }
+    @Test
+    public void testClubBP(){
+        ClubManagable clubRoster = new ClubRostersBP(rawData);
+        long beforeIntake = System.nanoTime();
+        clubRoster.intake(rawData);
+        long beforeQuery1 = System.nanoTime();
+        assertEquals("ACM",clubRoster.mostPopular());
+        long afterQuery1 = System.nanoTime();
+        assertEquals(5, clubRoster.uniqueClubs());
+        long afterQuery2 = System.nanoTime();
+       assertEquals(List.of("b@wpi.edu", "d@wpi.edu", "j@wpi.edu"),clubRoster.sortedEmails("ACM"));
+        long afterQuery3 = System.nanoTime();
+        System.out.printf("intake %d\n", beforeQuery1-beforeIntake);
+        System.out.printf("query1 %d\n", afterQuery1-beforeQuery1);
+        System.out.printf("query2 %d\n", afterQuery2-afterQuery1);
+        System.out.printf("query3 %d\n", afterQuery3-afterQuery2);
+    }
 
-//    @Test
-//    public void testClubRTP(){
-//        ClubManagable clubRosters = new ClubRostersRTP();
-//        clubRosters.intake(rawData);
-//        assertEquals("ACM",clubRosters.mostPopular());
-//        assertEquals(5, clubRosters.uniqueClubs());
-//        assertEquals(List.of("b@wpi.edu", "d@wpi.edu", "j@wpi.edu"),
-//                clubRosters.sortedEmails("ACM"));
-//    }
-//
-//    @Test
-//    public void testClubTimingIntake(){
-//        ClubManagable clubRostersRTP = new ClubRostersRTP();
-//        ClubManagable clubRostersBP = new ClubRosters();
-//
-//        long preRTPIntake = System.nanoTime();
-//        clubRostersRTP.intake(rawData);
-//        long postRTPIntake = System.nanoTime();
-//
-//        long preBPIntake = System.nanoTime();
-//        clubRostersBP.intake(rawData);
-//        long postBPIntake = System.nanoTime();
-//
-//        assertTrue((postRTPIntake - preRTPIntake) > (postBPIntake - preBPIntake));
-//    }
-//
-//    @Test
-//    public void testClubTimingOutput(){
-//        ClubManagable clubRostersRTP = new ClubRostersRTP();
-//        ClubManagable clubRostersBP = new ClubRosters();
-//        clubRostersRTP.intake(rawData);
-//        clubRostersBP.intake(rawData);
-//
-//        long preRTPAnswer = System.nanoTime();
-//        clubRostersRTP.mostPopular();
-//        long postRTPAnswer = System.nanoTime();
-//
-//        long preBPAnswer = System.nanoTime();
-//        clubRostersBP.mostPopular();
-//        long postBPAnswer = System.nanoTime();
-//
-//        assertTrue((postRTPAnswer - preRTPAnswer) < (postBPAnswer - preBPAnswer));
-//    }
+
+    @Test
+    public void testClubRTP(){
+        ClubManagable clubRosters = new ClubRostersRTP();
+        clubRosters.intake(rawData);
+        assertEquals("ACM",clubRosters.mostPopular());
+        assertEquals(5, clubRosters.uniqueClubs());
+        assertEquals(List.of("b@wpi.edu", "d@wpi.edu", "j@wpi.edu"),
+                clubRosters.sortedEmails("ACM"));
+    }
+
+    @Test
+    public void testClubTimingIntake(){
+        ClubManagable clubRostersRTP = new ClubRostersRTP();
+        ClubManagable clubRostersBP = new ClubRostersBP();
+
+        long preRTPIntake = System.nanoTime();
+        clubRostersRTP.intake(rawData);
+        long postRTPIntake = System.nanoTime();
+
+        long preBPIntake = System.nanoTime();
+        clubRostersBP.intake(rawData);
+        long postBPIntake = System.nanoTime();
+
+        assertTrue((postRTPIntake - preRTPIntake) > (postBPIntake - preBPIntake));
+    }
+
+    @Test
+    public void testClubTimingOutput(){
+        ClubManagable clubRostersRTP = new ClubRostersRTP();
+        ClubManagable clubRostersBP = new ClubRostersBP();
+        clubRostersRTP.intake(rawData);
+        clubRostersBP.intake(rawData);
+
+        long preRTPAnswer = System.nanoTime();
+        clubRostersRTP.mostPopular();
+        long postRTPAnswer = System.nanoTime();
+
+        long preBPAnswer = System.nanoTime();
+        clubRostersBP.mostPopular();
+        long postBPAnswer = System.nanoTime();
+
+        assertTrue((postRTPAnswer - preRTPAnswer) < (postBPAnswer - preBPAnswer));
+    }
 
 //    @Test
 //    public void testClubCountBPCSClubs(){

@@ -1,6 +1,7 @@
 package lecture11;
-import java.util.LinkedList;
+
 import java.util.List;
+import java.util.LinkedList;
 
 public class ClubRoster {
     public String clubName;
@@ -12,7 +13,7 @@ public class ClubRoster {
     }
 
     public void addEmail(String email){
-        this.emails.add(email);
+        if(!this.emails.contains(email))this.emails.add(email);
     }
 
     public void sort(){

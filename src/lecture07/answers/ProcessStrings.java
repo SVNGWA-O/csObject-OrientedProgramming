@@ -44,9 +44,9 @@ public class ProcessStrings {
      */
     public String longestString(){
         String answer = "";
-        for(String s : this.strings){
-            if(s.length() > answer.length()){
-                answer = s;
+        for(String word : this.strings){
+            if(word.length() > answer.length()){
+                answer = word;
             }
         }
         return answer;

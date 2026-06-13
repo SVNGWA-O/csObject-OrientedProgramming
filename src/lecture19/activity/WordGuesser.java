@@ -42,7 +42,18 @@ public class WordGuesser {
      * Takes a letter to guess as a string
      * @param letter the letter to guess
      */
-    public void guessLetter(String letter){
+    public void guessLetter(String letter) throws NotALetterException, AccidentalWordException{
+
+        if(letter.length() == 0 || letter.length() ==1 && !letter.matches("[a-z]")){
+            NotALetterException e = new NotALetterException(letter);
+            throw e;
+        }
+
+        if (letter.length()>1){
+            AccidentalWordException e = new AccidentalWordException(letter);
+            throw e;
+        }
+
         this.guessedLetters.add(letter.toCharArray()[0]);
         boolean foundLetter = false;
         for(int i = 0; i < currentWord.length; i++){

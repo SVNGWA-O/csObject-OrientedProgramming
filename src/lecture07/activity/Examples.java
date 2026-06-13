@@ -17,16 +17,17 @@ public class Examples {
     public ProcessStrings ps = new ProcessStrings(List.of("hello", "every", "CS", "2102", "student"));
     @Test
     public void testTotalCharacters(){
-        //assertEquals(???, ps.totalCharacters());
+        assertEquals(23, ps.totalCharacters());
     }
 
     @Test
     public void testLongestString(){
-        //assertEquals(???, ps.longestString());
+        assertEquals("student", ps.longestString());
     }
 
+    @Test
     public void testStringWithLength(){
-        //assertEquals(???,ps.stringsWithLength(???)); //wordle words?
+        assertEquals(List.of("hello", "every"),ps.stringsWithLength(5));//wordle words?
     }
 
 }

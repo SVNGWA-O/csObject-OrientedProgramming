@@ -2,7 +2,7 @@ package lecture13.activity;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ClubRoster {
+public class ClubRoster extends ClubRoastersTemplate{
     public String clubName;
     public List<String> emails;
 

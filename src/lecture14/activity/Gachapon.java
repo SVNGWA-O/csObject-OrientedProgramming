@@ -1,4 +1,5 @@
 package lecture14.activity;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ public class Gachapon {
 
     private int quartersPerToy = 2;
 
+    private IToyBinStrategy strat = new InOrderTBStrat();
+
     public Gachapon(List<Toy> toys){
-        this.toys = toys; // Encapsulation error!!!!
+        this.toys = new ArrayList<>(toys); // Encapsulation error!!!!
     }
 
     public Gachapon refillToyBin(List<Toy> toys){
@@ -24,7 +27,7 @@ public class Gachapon {
         return this;
     }
     public Gachapon loadQuarter(int howMany){
-        this.quartersLoaded+= howMany;
+        if (howMany >=0){this.quartersLoaded+= howMany;}
         return this;
     }
 
@@ -35,16 +38,15 @@ public class Gachapon {
     }
 
     public List<Toy> receiveToys(){
-        LinkedList<Toy> toysToReceive = new LinkedList<>();
-        if(quartersLoaded < quartersPerToy){
-            System.err.println("Not enough quarters");
-        }
-        for(int i = quartersLoaded; i >= quartersPerToy && ! toys.isEmpty(); i = i - quartersPerToy){
-            toysToReceive.add(toys.remove(0));
-        }
-        return toysToReceive;
+        GachaResult result =this.strat.receiveToys(this.quartersLoaded, this.quartersPerToy, this.toys);
+        this.quartersLoaded =-result.getQuartersSpent();
+
+        return result.getToysToReturn();
     }
 
+    public void  setStrat(IToyBinStrategy newStrat){
+        this.strat = newStrat ;
+    }
 
 
 }

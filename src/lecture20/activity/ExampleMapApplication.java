@@ -53,17 +53,44 @@ public class ExampleMapApplication {
         String[] talesByWords = tale.replace(", ", " ").replace(".", " ").replace("\n", " ").split(" ");
         // TODO: Add words and frequency
 
+        for (String word: talesByWords){
+            //frequencyWordTale.get(Key)
+            // frequecyWordsTale.put(key, value)
+            //frequencyWordsTale.containsKey()
+
+            frequencyWordsTale.get(10);
+
+            if(frequencyWordsTale.containsKey(word)){
+                int newCount = frequencyWordsTale.get(word)+1;
+                frequencyWordsTale.put(word, newCount);
+            }
+
+            else{
+                frequencyWordsTale.put(word, 1);
+            }
+        }
+
+
+
         Map<String, Integer> frequencyWordsAesop = new HashMap<>();
         String[] aesopByWord = aesop.replace("\n", " ").replaceAll("[^\\sa-zA-Z0-9']", "").split(" "); // Use regex to filter out punctuation
         // TODO: Add words and frequency
-
+    for(String word : aesopByWord){
+    int newCount = frequencyWordsAesop.getOrDefault(word, 0) +1;
+    frequencyWordsAesop.put(word, newCount);
+    }
         // Task #2: Find the word with the highest frequency (looping over keys)
         System.out.println("----------------------------------------");
         String highestFreqWordInTale = "";
         int highestFreqInTale = Integer.MIN_VALUE;
         // TODO: Loop over all keys
-        System.out.println("Word with highest frequency in Tale: " + highestFreqInTale + " (" + highestFreqInTale + ")");
-
+        System.out.println("Word with highest frequency in Tale: " + highestFreqWordInTale + " (" + highestFreqInTale + ")");
+for (String word: frequencyWordsTale.keySet()){
+    if(highestFreqInTale < frequencyWordsTale.get(word)){
+        highestFreqInTale = frequencyWordsTale.get(word)
+        highestFreqInTale = frequencyWordsTale.get(word)
+    }
+}
         // Task #3: Find the word with the highest frequency (looping over key-value pairs)
         System.out.println("----------------------------------------");
         String highestFreqWordInAesop = "";
@@ -71,9 +98,21 @@ public class ExampleMapApplication {
         // TODO: Loop over all key-value pairs
         System.out.println("Word with highest frequency in Aesop: " + highestFreqWordInAesop + " (" + highestFreqInAesop + ")");
 
+        Set<String> aesopKeys = frequencyWordsAesop.keySet();
+        Set<String> talesKeys = frequencyWordsTale.keySet();
+
+        Set<String> combinedMap = new HashSet<>();
+        combinedMap.addAll(aesopKeys);
+        combinedMap.addAll(talesKeys);
+
+
+
         // Task #4: Combining into one single map
         System.out.println("----------------------------------------");
-        Map<String, Integer> combinedMap = new HashMap<>();
+
+        for (String word: combinedMap){
+
+        }
         // TODO: Combine into one single map
 
         String highestFreqWord = "";
@@ -85,6 +124,8 @@ public class ExampleMapApplication {
         System.out.println("----------------------------------------");
         Map<Integer, List<String>> inverseLookup = new HashMap<>();
         // TODO: Loop from 1 to highestFreq and build an inverse look up map
+
+        for(Map.Entry<String, Integer> pair: combinedMap.entrySet())
 
         System.out.println("----------------------------------------");
     }

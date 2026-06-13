@@ -30,7 +30,8 @@ public class Movie {
      * @return true if the movie has baby friendly properties
      */
     public boolean literallyForBabies(){
-        throw new RuntimeException("TODO: Replace Me");
+        return (this.rating.equals("G") && (this.runningTime<90));
+
     }
 
     /**

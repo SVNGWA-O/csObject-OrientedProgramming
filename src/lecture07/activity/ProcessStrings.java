@@ -1,5 +1,6 @@
 package lecture07.activity;
 import java.util.List;
+import java.util.LinkedList;
 
 
 /*
@@ -31,8 +32,14 @@ public class ProcessStrings {
      * Calculates the total characters in all the strings
      * @return the number of characters total
      */
-    public int totalCharacters(){
-        return 0;
+    public int totalCharacters() {
+
+        int answer = 0;
+        for (String word:this.strings) {
+            answer += word.length();
+        }
+        return answer;
+
     }
 
     /**
@@ -40,7 +47,15 @@ public class ProcessStrings {
      * @return the longest string in the list (or "" if the list is empty)
      */
     public String longestString(){
-        return "";
+
+        String answer = "";
+        for(String s : this.strings){
+            if(s.length() > answer.length()){
+                answer = s;
+            }
+        }
+        return answer;
+
     }
 
     /**
@@ -49,7 +64,16 @@ public class ProcessStrings {
      * @return a *new* list of strings with the given length
      */
     public List<String> stringsWithLength(int length){
-        return null;
+        List<String> answer = new LinkedList<>();
+        for(String word: this.strings ){
+            if(word.length() == length){
+                answer.add(word);
+            }
+            else if(this.strings== null){
+
+            }
+        }
+        return answer;
     }
 
 }

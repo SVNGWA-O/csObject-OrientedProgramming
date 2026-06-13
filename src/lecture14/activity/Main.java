@@ -55,6 +55,9 @@ public class Main {
 
         // method chaining (Used in the builder pattern a lot):
         System.out.println(g.loadQuarter().loadQuarter().loadQuarter().loadQuarter().receiveToys());
+        g.setStrat(new RiggedTBStrat());
+        System.out.println(g.loadQuarter().loadQuarter().loadQuarter().loadQuarter().receiveToys());
+
 
     }
 

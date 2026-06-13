@@ -11,4 +11,13 @@ public class Furnace {
     public Furnace(double fuelConsumption){
         this.fuelConsumption = fuelConsumption;
     }
+
+
+    public double howLong(double KgOfFuel){
+            return KgOfFuel/this.fuelConsumption;
+    }
+
+    public double burnFuel(double seconds) {
+    return fuelConsumption * seconds;
+    }
 }

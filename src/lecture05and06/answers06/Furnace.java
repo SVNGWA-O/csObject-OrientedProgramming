@@ -5,6 +5,9 @@ public class Furnace {
     /** The rate at which this furnace consumes fuel while running (kilogram of fuel per second) */
     public double fuelConsumption;
 
+    public String toString(){
+        return String.format("F[%.1f]", this.fuelConsumption);
+    }
     /**
      * Instantiates the furnace to a particular thoroughput
      * @param fuelConsumption (kg fuel/s)
@@ -19,5 +22,15 @@ public class Furnace {
 
     public double kgBurnedAfter(double seconds){
         return this.fuelConsumption * seconds;
+    }
+
+
+    public boolean equals(Object o){
+        if(o instanceof Furnace furn){
+            return Math.abs(this.fuelConsumption - furn.fuelConsumption) < 0.01;
+        }
+        else{
+            return false;
+        }
     }
 }

@@ -29,9 +29,9 @@ public class Main {
         MockRottenTomatoes mRT = new MockRottenTomatoes(entries);
         System.out.println(mRT.averageScore());
 
-        PromptRottenTomatoes pRT = new PromptRottenTomatoes(2);
-        System.out.println(pRT.averageScore());
-
+//        PromptRottenTomatoes pRT = new PromptRottenTomatoes(2);
+//        System.out.println(pRT.averageScore());
+//
         CSVRottenTomatoes csvRT = new CSVRottenTomatoes("deniro.csv", ";");
         System.out.println(csvRT.averageScore());
 

@@ -24,65 +24,74 @@ public class Examples {
        -   5. transfer(acc,$) // if time!
        Pro-tip: comment/un-comment is CTRL+/ on windows and linux (possible CMD+/ on Mac??)
      */
-//    @Test
-//    public void test1ArgConstructor(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson");
-//        assertEquals(0.0,b.balance(),0.01);
-//    }
-//
-//    @Test
-//    public void test2ArgConstructor(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
-//        assertEquals(50.0,b.balance(),0.01);
-//    }
-//
-//    @Test
-//    public void test2ArgConstructorNegative(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", -50.0);
-//        assertEquals(0.0,b.balance(),0.01);
-//    }
-//
-//    @Test
-//    public void testDeposit(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
-//        b.deposit(75.0);
-//        assertEquals(125.0,b.balance(),0.01);
-//    }
-//
-//    @Test
-//    public void testWithdraw(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
-//        double amountWithdrawn = b.withdraw(10.0);
-//        assertEquals(40.0,b.balance(),0.01);
-//        assertEquals(10.0, amountWithdrawn, 0.01);
-//
-//    }
-//
-//    @Test
-//    public void testOverWithdraw(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
-//        double amountWithdrawn = b.withdraw(75.0);
-//        assertEquals(0.0,b.balance(),0.01);
-//        assertEquals(50.0, amountWithdrawn, 0.01);
-//    }
-//
-//    @Test
-//    public void testTransfer(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
-//        BankAccount l = new BankAccount("Lisa Simpson", 100.0);
-//        double amountSent = b.transfer(l,20.0);
-//        assertEquals(30.0, b.balance(), 0.01);
-//        assertEquals(120.0,l.balance(), 0.01);
-//        assertEquals(20.0, amountSent, 0.01);
-//    }
-//
-//    @Test
-//    public void testTransferOverdrawn(){
-//        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
-//        BankAccount l = new BankAccount("Lisa Simpson", 100.0);
-//        double amountSent = b.transfer(l,75.0);
-//        assertEquals(0.0, b.balance(),0.01);
-//        assertEquals(150.0,l.balance(), 0.01);
-//        assertEquals(50.0, amountSent, 0.01);
-//    }
+    @Test
+    public void test1ArgConstructor(){
+        BankAccount b = new BankAccount("Bartholomew Simpson");
+        assertEquals(0.0,b.balance(),0.01);
+    }
+
+    @Test
+    public void test2ArgConstructor(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        assertEquals(50.0,b.balance(),0.01);
+    }
+
+    @Test
+    public void test2ArgConstructorNegative(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", -50.0);
+        assertEquals(0.0,b.balance(),0.01);
+    }
+
+    @Test
+    public void testDeposit(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        b.deposit(75.0);
+        assertEquals(125.0,b.balance(),0.01);
+    }
+
+    @Test
+    public void testDeposit2(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        b.deposit(75.0);
+
+        BankAccount b2 = new BankAccount("Bartholomew Simpson", 125.0);
+        assertEquals(b2, b);
+    }
+
+    @Test
+    public void testWithdraw(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        double amountWithdrawn = b.withdraw(10.0);
+        assertEquals(40.0,b.balance(),0.01);
+        assertEquals(10.0, amountWithdrawn, 0.01);
+
+    }
+
+    @Test
+    public void testOverWithdraw(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        double amountWithdrawn = b.withdraw(75.0);
+        assertEquals(0.0,b.balance(),0.01);
+        assertEquals(50.0, amountWithdrawn, 0.01);
+    }
+
+    @Test
+    public void testTransfer(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        BankAccount l = new BankAccount("Lisa Simpson", 100.0);
+        double amountSent = b.transfer(l,20.0);
+        assertEquals(30.0, b.balance(), 0.01);
+        assertEquals(120.0,l.balance(), 0.01);
+        assertEquals(20.0, amountSent, 0.01);
+    }
+
+    @Test
+    public void testTransferOverdrawn(){
+        BankAccount b = new BankAccount("Bartholomew Simpson", 50.0);
+        BankAccount l = new BankAccount("Lisa Simpson", 100.0);
+        double amountSent = b.transfer(l,75.0);
+        assertEquals(0.0, b.balance(),0.01);
+        assertEquals(150.0,l.balance(), 0.01);
+        assertEquals(50.0, amountSent, 0.01);
+    }
 }
